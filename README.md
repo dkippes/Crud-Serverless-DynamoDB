@@ -26,6 +26,6 @@ No olvidar poner el token que se uso para loguear sino no va a poder responder w
 
 ### Borra un usuario
 - http://localhost:3000/dev/users/deleteUser
-</hr>
+
 ### Actualiza la password de un usuario
 - http://localhost:3000/dev/users/updateUser
