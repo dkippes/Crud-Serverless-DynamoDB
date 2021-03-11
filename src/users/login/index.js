@@ -1,6 +1,7 @@
 const AWS = require("aws-sdk");
 const codeResponse = require("../../utils/statusCode");
 const userSchema = require("../../utils/userSchema");
+const createToken = require('../../auth/createToken');
 
 AWS.config.update({
   region: "us-east-2",
@@ -29,8 +30,13 @@ async function loginUser(event, context) {
     //Si encuentro al usuario
     if (isUserRegister.Items[0] == undefined) {
       return codeResponse(210, "Usuario no registrado / Error de credenciales");
-    } else {     
-      return codeResponse(200, "Usuario logueado con exito");
+    } else {
+      
+      // Si el usuario entra le crea el token.
+      return codeResponse(200, "Usuario logueado con exito", {
+        email: isUserRegister.Items[0].email,
+        token: createToken(isUserRegister.Items[0].email)
+      });
     }
     
   } catch {
