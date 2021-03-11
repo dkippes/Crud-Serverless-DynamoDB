@@ -23,6 +23,14 @@ loginUser:
         method: post
         cors: true
 
+updateUser:
+  handler: src/users/update/index.updateUser
+  events:
+    - http:
+        path: users/updateUser
+        method: post
+        cors: true
+
 
 deleteUser:
   handler: src/users/delete/index.deleteUserByEmail
